@@ -1,0 +1,49 @@
+{
+  "name": "pncrush-bin",
+  "version": "0.0.1",
+  "description": "Pngcrush wrapper that makes it seamlessly available as a local dependency on OS X, Linux",
+  "keywords": [
+    "png",
+    "compress",
+    "minify",
+    "optimize",
+    "img",
+    "image"
+  ],
+  "author": {
+    "name": "1000ch",
+    "email": "orz1000ch@gmail.com",
+    "url": "http://1000ch.net"
+  },
+  "main": "lib/pngcrush",
+  "bin": {
+    "pngcrush": "bin/pngcrush.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/1000ch/node-pngcrush-bin.git"
+  },
+  "scripts": {
+    "test": "mocha",
+    "postinstall": "node lib/check.js"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "licenses": [
+    {
+      "type": "BSD"
+    }
+  ],
+  "dependencies": {
+    "bin-wrapper": "~0.1.3",
+    "chalk": "~0.4.0"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "files": [
+    "bin",
+    "lib"
+  ]
+}
