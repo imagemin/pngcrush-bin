@@ -1,6 +1,6 @@
 {
   "name": "pngcrush-bin",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Pngcrush wrapper that makes it seamlessly available as a local dependency on OS X, Linux",
   "keywords": [
     "png",
