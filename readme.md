@@ -1,4 +1,4 @@
-# [node-pngcrush-bin](https://npmjs.org/package/pngcrush-bin)
+# [node-pngcrush-bin](https://npmjs.org/package/pngcrush-bin) [![Build Status](https://travis-ci.org/1000ch/node-pngcrush-bin.png?branch=master)](https://travis-ci.org/1000ch/node-pngcrush-bin)
 
 ## About
 

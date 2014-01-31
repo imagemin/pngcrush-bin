@@ -1,6 +1,6 @@
 {
   "name": "pngcrush-bin",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Pngcrush wrapper that makes it seamlessly available as a local dependency on OS X, Linux",
   "keywords": [
     "png",
@@ -16,6 +16,9 @@
     "url": "http://1000ch.net"
   },
   "main": "lib/pngcrush",
+  "scripts": {
+    "test": "mocha ./test/*.js"
+  },
   "bin": {
     "pngcrush": "bin/pngcrush.js"
   },
@@ -40,7 +43,7 @@
     "chalk": "~0.4.0"
   },
   "devDependencies": {
-    "mocha": "*"
+    "mocha": "~1.17.1"
   },
   "files": [
     "bin",
