@@ -29,27 +29,20 @@ describe('pngcrush()', function () {
   });
 
   it('should minify a .png', function (callback) {
-    
-    var rs = fs.createReadStream(path.join(__dirname, 'fixtures', 'test.png'));
-    var ws = fs.createWriteStream(path.join(__dirname, 'fixtures', 'minified.png'));
-    
-    ws.on('close', function () {
-      var binPath = path.join(__dirname, '../bin/pngcrush.js');
-      var args = [
-        '-rem alla',
-        '-brute',
-        '-reduce',
-        path.join(__dirname, 'fixtures', 'minified.png')
-      ];
+    var binPath = path.join(__dirname, '../bin/pngcrush.js');
+    var args = [
+      '-reduce',
+      '-rem alla',
+      '-brute',
+      path.join(__dirname, 'fixtures', 'test.png'),
+      path.join(__dirname, 'fixtures', 'minified.png')
+    ];
 
-      execFile('node', [binPath].concat(args), function () {
-        var actual = fs.statSync('test/fixtures/minified.png').size;
-        var original = fs.statSync('test/fixtures/test.png').size;
-        assert(actual < original);
-        callback();
-      });
+    execFile('node', [binPath].concat(args), function () {
+      var actual = fs.statSync('test/fixtures/minified.png').size;
+      var original = fs.statSync('test/fixtures/test.png').size;
+      assert(actual < original);
+      callback();
     });
-    
-    rs.pipe(ws);
   });
 });

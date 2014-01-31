@@ -13,7 +13,7 @@
 $ npm install -g pngcrush-bin
 ```
 
-## Usage with NodeJS
+## Usage with Node.js
 
 ```js
 var execFile = require('child_process').execFile;
