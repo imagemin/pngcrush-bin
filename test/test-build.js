@@ -7,7 +7,7 @@ var options = require('../lib/pngcrush').options;
 var path = require('path');
 
 describe('pngcrush.build()', function () {
-  it('should rebuild the pngcrush binaries', function (cb) {
+  it('should rebuild the pngcrush binaries', function (callback) {
     this.timeout(false);
     var bin = new Bin(options);
 
@@ -19,7 +19,7 @@ describe('pngcrush.build()', function () {
       var actualCTime = fs.statSync(bin.path).ctime;
 
       assert(actualCTime !== origCTime);
-      cb();
+      callback();
     });
   });
 });

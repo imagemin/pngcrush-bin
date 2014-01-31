@@ -2,10 +2,13 @@
 
 var assert = require('assert');
 var execFile = require('child_process').execFile;
+var exec = require('child_process').exec;
 var fs = require('fs');
 var path = require('path');
 
 describe('pngcrush()', function () {
+  this.timeout(0);
+
   after(function () {
     fs.unlinkSync('test/fixtures/minified.png');
   });
@@ -38,7 +41,7 @@ describe('pngcrush()', function () {
       path.join(__dirname, 'fixtures', 'minified.png')
     ];
 
-    execFile('node', [binPath].concat(args), function () {
+    exec('node ' + [binPath].concat(args).join(' '), function () {
       var actual = fs.statSync('test/fixtures/minified.png').size;
       var original = fs.statSync('test/fixtures/test.png').size;
       assert(actual < original);
