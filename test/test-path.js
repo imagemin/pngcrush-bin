@@ -7,7 +7,7 @@ var path = require('path');
 
 describe('pngcrush()', function () {
   after(function () {
-    fs.unlinkSync('test/minified.png');
+    fs.unlinkSync('test/fixtures/minified.png');
   });
 
   it('should return path to pngcrush binary', function (cb) {
