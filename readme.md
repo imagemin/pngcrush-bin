@@ -9,8 +9,8 @@
 
 [![Build Status](https://travis-ci.org/1000ch/node-pngcrush-bin.png?branch=master)](https://travis-ci.org/1000ch/node-pngcrush-bin)
 [![NPM version](https://badge.fury.io/js/pngcrush-bin.png)](http://badge.fury.io/js/pngcrush-bin)
-[![Dependency Status](https://david-dm.org/1000ch/pngcrush-bin.png)](https://david-dm.org/1000ch/pngcrush-bin)
-[![devDependency Status](https://david-dm.org/1000ch/pngcrush-bin/dev-status.png)](https://david-dm.org/1000ch/pngcrush-bin#info=devDependencies)
+[![Dependency Status](https://david-dm.org/1000ch/node-pngcrush-bin.png)](https://david-dm.org/1000ch/node-pngcrush-bin)
+[![devDependency Status](https://david-dm.org/1000ch/node-pngcrush-bin/dev-status.png)](https://david-dm.org/1000ch/node-pngcrush-bin#info=devDependencies)
 
 [![NPM](https://nodei.co/npm/pngcrush-bin.png)](https://nodei.co/npm/pngcrush-bin/)
 
