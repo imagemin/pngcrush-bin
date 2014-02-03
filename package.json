@@ -16,9 +16,6 @@
     "url": "http://1000ch.net"
   },
   "main": "lib/pngcrush",
-  "scripts": {
-    "test": "mocha ./test/*.js"
-  },
   "bin": {
     "pngcrush": "bin/pngcrush.js"
   },
@@ -27,17 +24,15 @@
     "url": "git://github.com/1000ch/node-pngcrush-bin.git"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "mocha test/*.js",
     "postinstall": "node lib/check.js"
   },
   "engines": {
     "node": ">=0.10.0"
   },
-  "licenses": [
-    {
-      "type": "BSD"
-    }
-  ],
+  "licenses": [{
+    "type": "BSD"
+  }],
   "dependencies": {
     "bin-wrapper": "~0.1.9",
     "chalk": "~0.4.0"
