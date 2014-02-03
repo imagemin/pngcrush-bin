@@ -24,7 +24,7 @@
     "url": "git://github.com/1000ch/node-pngcrush-bin.git"
   },
   "scripts": {
-    "test": "mocha ./test/test-path.js",
+    "test": "mocha ./test/test-build.js ./test/test-path.js",
     "postinstall": "node ./lib/build.js"
   },
   "engines": {
