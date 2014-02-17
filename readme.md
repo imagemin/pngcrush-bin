@@ -33,5 +33,5 @@ execFile(pngcrushPath, ['-reduce', '-brute', 'dest.png'], function() {
 
 ## License
 
-This is MIT.
+This is licensed under BSD.
 [pngcrush](http://pmt.sourceforge.net/pngcrush/) is licensed under OSI Approved License.
