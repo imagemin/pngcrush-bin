@@ -1,6 +1,6 @@
 {
   "name": "pngcrush-bin",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Pngcrush wrapper that makes it seamlessly available as a local dependency on OS X, Linux",
   "keywords": [
     "png",
@@ -12,7 +12,7 @@
   ],
   "author": {
     "name": "1000ch",
-    "email": "orz1000ch@gmail.com",
+    "email": "shogo.sensui@gmail.com",
     "url": "http://1000ch.net"
   },
   "main": "lib/pngcrush",
