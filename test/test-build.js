@@ -12,7 +12,7 @@ describe('pngcrush.build()', function () {
     var bin = new Bin(options);
 
     bin.path = path.join(__dirname, '../vendor', bin.bin);
-    bin.buildScript = 'make && mv ./pngcrush ' + path.join(__dirname, '../vendor');
+    bin.buildScript = 'make && mv ./pngcrush ' + path.join(__dirname, '../vendor/pngcrush');
 
     bin.build(function () {
       var origCTime = fs.statSync(bin.path).ctime;
