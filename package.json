@@ -15,17 +15,16 @@
     "email": "shogo.sensui@gmail.com",
     "url": "http://1000ch.net"
   },
-  "main": "lib/pngcrush",
   "bin": {
-    "pngcrush": "bin/pngcrush.js"
+    "pngcrush": "cli.js"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/1000ch/node-pngcrush-bin.git"
   },
   "scripts": {
-    "test": "mocha ./test/test-build.js ./test/test-path.js",
-    "postinstall": "node ./lib/build.js"
+    "test": "mocha --reporter list --timeout 0",
+    "postinstall": "node index.js"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -34,15 +33,18 @@
     "type": "BSD"
   }],
   "dependencies": {
-    "bin-wrapper": "~0.1.9",
-    "chalk": "~0.4.0"
+    "bin-build": "^0.1.0",
+    "bin-wrapper": "^0.3.0",
+    "chalk": "^0.4.0"
   },
   "devDependencies": {
-    "mocha": "~1.17.1"
+    "bin-check": "^0.1.0",
+    "mocha": "^1.18.2",
+    "rimraf": "^2.2.6"
   },
   "files": [
-    "bin",
-    "lib",
-    "vendor"
+    "cli.js",
+    "index.js",
+    "test"
   ]
 }

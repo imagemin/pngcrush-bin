@@ -1,10 +1,8 @@
 # [node-pngcrush-bin](https://npmjs.org/package/pngcrush-bin)
 
-## About
-
 [pngcrush](http://pmt.sourceforge.net/pngcrush/) Node.js wrapper that optimize PNG images.
 
-> Pngcrush is an optimizer for PNG (Portable Network Graphics) files. It can be run from a commandline in an MSDOS window, or from a UNIX or LINUX commandline. 
+> Pngcrush is an optimizer for PNG (Portable Network Graphics) files. It can be run from a commandline in an MSDOS window, or from a UNIX or LINUX commandline.
 > Its main purpose is to reduce the size of the PNG IDAT datastream by trying various compression levels an PNG filter methods. It also can be used to remove unwanted ancillary chunks, or to add certain chunks including gAMA, tRNS, iCCP, and textual chunks.
 
 [![Build Status](https://travis-ci.org/1000ch/node-pngcrush-bin.svg?branch=master)](https://travis-ci.org/1000ch/node-pngcrush-bin)
@@ -15,16 +13,20 @@
 ## Install
 
 ```sh
-$ npm install -g pngcrush-bin
+$ npm install --save pngcrush-bin
 ```
 
-## Usage with Node.js
+## Usage
 
 ```js
 var execFile = require('child_process').execFile;
-var pngcrushPath = require('pngcrush-bin').path;
+var pngcrush = require('pngcrush-bin').path;
 
-execFile(pngcrushPath, ['-reduce', '-brute', 'dest.png'], function() {
+execFile(pngcrush, ['-reduce', '-brute', 'input.png', 'output.png'], function (err) {
+  if (err) {
+    throw err;
+  }
+
   console.log('Image minified');
 });
 ```
@@ -32,4 +34,5 @@ execFile(pngcrushPath, ['-reduce', '-brute', 'dest.png'], function() {
 ## License
 
 This is licensed under BSD.
+
 [pngcrush](http://pmt.sourceforge.net/pngcrush/) is licensed under OSI Approved License.
