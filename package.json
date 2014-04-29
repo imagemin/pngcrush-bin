@@ -1,6 +1,6 @@
 {
   "name": "pngcrush-bin",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "Pngcrush wrapper that makes it seamlessly available as a local dependency on OS X, Linux",
   "keywords": [
     "png",
@@ -23,7 +23,7 @@
     "url": "git://github.com/1000ch/node-pngcrush-bin.git"
   },
   "scripts": {
-    "test": "mocha --reporter list --timeout 0",
+    "test": "mocha --reporter spec --timeout 0",
     "postinstall": "node index.js"
   },
   "engines": {
