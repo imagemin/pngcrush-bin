@@ -35,7 +35,7 @@ fs.exists(bin.use(), function (exists) {
 
         var builder = new BinBuild()
           .src('http://downloads.sourceforge.net/project/pmt/pngcrush/1.7.73/pngcrush-1.7.73.zip')
-          .make('make && mkdir ' + bin.dest() + ' && mv ./pngcrush ' + bin.use());
+          .make('make && mkdir -p ' + bin.dest() + ' && mv ./pngcrush ' + bin.use());
 
         return builder.build(function (err) {
           if (err) {
