@@ -13,8 +13,10 @@ var path = require('path');
 var bin = new BinWrapper()
   .src('https://raw.github.com/1000ch/node-pngcrush-bin/master/vendor/osx/pngcrush', 'darwin')
   .src('https://raw.github.com/1000ch/node-pngcrush-bin/master/vendor/linux/pngcrush', 'linux')
+  .src('https://raw.github.com/1000ch/node-pngcrush-bin/master/vendor/win/x64/pngcrush', 'win32', 'x64')
+  .src('https://raw.github.com/1000ch/node-pngcrush-bin/master/vendor/win/x32/pngcrush', 'win32', 'x32')
   .dest(path.join(__dirname, 'vendor'))
-  .use('pngcrush');
+  .use(process.platform === 'win32' ? 'pngcrush.exe' : 'pngcrush');
 
 /**
  * Only run check if binary doesn't already exist

@@ -28,7 +28,7 @@
     "url": "git://github.com/1000ch/node-pngcrush-bin.git"
   },
   "scripts": {
-    "test": "mocha --reporter spec --timeout 0",
+    "test": "mocha --reporter spec --timeout 50000",
     "postinstall": "node index.js"
   },
   "engines": {
