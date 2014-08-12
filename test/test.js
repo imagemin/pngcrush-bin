@@ -22,7 +22,7 @@ describe('pngcrush()', function () {
     var tmp = path.join(__dirname, 'tmp');
     var builder = new BinBuild()
       .src('http://downloads.sourceforge.net/project/pmt/pngcrush/1.7.73/pngcrush-1.7.73.zip')
-      .make('make && mv ./pngcrush ' + path.join(tmp, 'pngcrush'));
+      .cmd('make && mv ./pngcrush ' + path.join(tmp, 'pngcrush'));
 
     builder.build(function (err) {
       assert(!err);
@@ -41,7 +41,9 @@ describe('pngcrush()', function () {
     ];
 
     binCheck(binPath, args, function (err, works) {
-      cb(assert.equal(works, true));
+      assert(!err);
+      assert.equal(works, true);
+      cb();
     });
   });
 
@@ -54,11 +56,13 @@ describe('pngcrush()', function () {
       path.join(__dirname, 'tmp/test.png')
     ];
 
-    execFile(binPath, args, function () {
+    execFile(binPath, args, function (err) {
       var src = fs.statSync(path.join(__dirname, 'fixtures/test.png')).size;
       var dest = fs.statSync(path.join(__dirname, 'tmp/test.png')).size;
 
-      cb(assert(dest < src));
+      assert(!err);
+      assert(dest < src);
+      cb();
     });
   });
 });
