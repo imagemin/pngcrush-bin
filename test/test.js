@@ -22,16 +22,19 @@ describe('pngcrush()', function () {
   });
 
   it('should rebuild the pngcrush binaries', function (cb) {
-    var tmp = path.join(__dirname, 'tmp');
+    var binFilename = process.platform === 'win32' ? 'pngcrush.exe' : 'pngcrush';
+    var tmpBinPath = path.join(__dirname, 'tmp', binFilename);
+
     var builder = new BinBuild()
       .src('http://downloads.sourceforge.net/project/pmt/pngcrush/' + binVersion + '/pngcrush-' + binVersion + '.zip')
-      .cmd('make && mv ./pngcrush ' + path.join(tmp, 'pngcrush'));
+      .cmd('make')
+      .cmd('node -p "require(\'fs\').renameSync(\'' + binFilename + '\', \'' + tmpBinPath + '\')"');
 
     builder.build(function (err) {
       if (err) {
         return cb(err);
       }
-      assert(fs.existsSync(path.join(tmp, 'pngcrush')));
+      assert(fs.existsSync(tmpBinPath));
       cb();
     });
   });
