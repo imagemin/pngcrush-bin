@@ -25,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/1000ch/node-pngcrush-bin.git"
+    "url": "git://github.com/imagemin/pngcrush-bin.git"
   },
   "scripts": {
     "test": "mocha --reporter spec --timeout 50000",
@@ -35,7 +35,7 @@
     "node": ">=0.10.0"
   },
   "licenses": [{
-    "type": "BSD"
+    "type": "MIT"
   }],
   "dependencies": {
     "bin-build": "^0.2.0",
