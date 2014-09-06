@@ -1,4 +1,4 @@
-# [pngcrush-bin](https://npmjs.org/package/pngcrush-bin) [![Build Status](https://travis-ci.org/imagemin/node-pngcrush-bin.svg?branch=master)](https://travis-ci.org/imagemin/pngcrush-bin)
+# [pngcrush-bin](https://npmjs.org/package/pngcrush-bin) [![Build Status](http://img.shields.io/travis/imagemin/pngcrush-bin.svg?style=flat)](https://travis-ci.org/imagemin/pngcrush-bin) [![Build status](https://ci.appveyor.com/api/projects/status/cbnmru7q2hm2sk14)](https://ci.appveyor.com/project/ShinnosukeWatanabe/pngcrush-bin)
 
 [pngcrush](http://pmt.sourceforge.net/pngcrush/) Node.js wrapper that optimize PNG images.
 
