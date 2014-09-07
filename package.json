@@ -1,6 +1,6 @@
 {
   "name": "pngcrush-bin",
-  "version": "0.1.18",
+  "version": "1.0.0",
   "description": "pngcrush wrapper that makes it seamlessly available as a local dependency",
   "license": "MIT",
   "repository": "imagemin/pngcrush-bin",
