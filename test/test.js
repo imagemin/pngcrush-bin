@@ -1,79 +1,77 @@
-/*global afterEach, beforeEach, describe, it */
 'use strict';
 
-var assert = require('assert');
 var binCheck = require('bin-check');
 var BinBuild = require('bin-build');
 var execFile = require('child_process').execFile;
 var fs = require('fs');
+var mkdir = require('mkdirp');
 var path = require('path');
 var rm = require('rimraf');
+var test = require('ava');
+var tmp = path.join(__dirname, 'tmp');
 
-var binPath = require('../').path;
-var binVersion = require('../lib').v;
+test('rebuild the pngcrush binaries', function (t) {
+	t.plan(3);
 
-describe('pngcrush()', function () {
-  afterEach(function (cb) {
-    rm(path.join(__dirname, 'tmp'), cb);
-  });
+	var move = process.platform === 'win32' ? 'move' : 'mv';
+	var name = process.platform === 'win32' ? 'pngcrush.exe' : 'pngcrush';
+	var version = require('../').version;
 
-  beforeEach(function () {
-    fs.mkdirSync(path.join(__dirname, 'tmp'));
-  });
+	var builder = new BinBuild()
+		.src('http://downloads.sourceforge.net/project/pmt/pngcrush/' + version + '/pngcrush-' + version + '.zip')
+		.cmd('mkdir -p ' + tmp)
+		.cmd('make && ' + move + ' ' + name + ' ' + path.join(tmp, name));
 
-  it('should rebuild the pngcrush binaries', function (cb) {
-    var binFilename = process.platform === 'win32' ? 'pngcrush.exe' : 'pngcrush';
-    var tmpBinPath = path.join(__dirname, 'tmp', binFilename);
+	builder.build(function (err) {
+		t.assert(!err);
 
-    var builder = new BinBuild()
-      .src('http://downloads.sourceforge.net/project/pmt/pngcrush/' + binVersion + '/pngcrush-' + binVersion + '.zip')
-      .cmd('make')
-      .cmd((process.platform === 'win32' ? 'move' : 'mv') + ' ' + binFilename + ' ' + tmpBinPath);
+		fs.exists(path.join(tmp, name), function (exists) {
+			t.assert(exists);
 
-    builder.build(function (err) {
-      if (err) {
-        return cb(err);
-      }
-      assert(fs.existsSync(tmpBinPath));
-      cb();
-    });
-  });
+			rm(tmp, function (err) {
+				t.assert(!err);
+			});
+		});
+	});
+});
 
-  it('should return path to binary and verify that it is working', function (cb) {
-    var args = [
-      '-reduce',
-      '-brute',
-      path.join(__dirname, 'fixtures/test.png'),
-      path.join(__dirname, 'tmp/test.png')
-    ];
+test('return path to binary and verify that it is working', function (t) {
+	t.plan(2);
 
-    binCheck(binPath, args, function (err, works) {
-      if (err) {
-        return cb(err);
-      }
-      assert.equal(works, true);
-      cb();
-    });
-  });
+	binCheck(require('../').path, ['-version'], function (err, works) {
+		t.assert(!err);
+		t.assert(works);
+	});
+});
 
-  it('should minify a PNG', function (cb) {
-    var args = [
-      '--recompress',
-      '--shrink-extra',
-      path.join(__dirname, 'fixtures/test.png'),
-      path.join(__dirname, 'tmp/test.png')
-    ];
+test('minify a PNG', function (t) {
+	t.plan(6);
 
-    execFile(binPath, args, function (err) {
-      if (err) {
-        return cb(err);
-      }
+	var args = [
+		'--recompress',
+		'--shrink-extra',
+		path.join(__dirname, 'fixtures/test.png'),
+		path.join(__dirname, 'tmp/test.png')
+	];
 
-      var src = fs.statSync(path.join(__dirname, 'fixtures/test.png')).size;
-      var dest = fs.statSync(path.join(__dirname, 'tmp/test.png')).size;
+	mkdir(tmp, function (err) {
+		t.assert(!err);
 
-      assert(dest < src);
-      cb();
-    });
-  });
+		execFile(require('../').path, args, function (err) {
+			t.assert(!err);
+
+			fs.stat(path.join(__dirname, 'fixtures/test.png'), function (err, a) {
+				t.assert(!err);
+
+				fs.stat(path.join(tmp, 'test.png'), function (err, b) {
+					t.assert(!err);
+					t.assert(b.size < a.size);
+
+					rm(tmp, function (err) {
+						t.assert(!err);
+					});
+				});
+			});
+		});
+	});
 });
