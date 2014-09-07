@@ -28,7 +28,7 @@ describe('pngcrush()', function () {
     var builder = new BinBuild()
       .src('http://downloads.sourceforge.net/project/pmt/pngcrush/' + binVersion + '/pngcrush-' + binVersion + '.zip')
       .cmd('make')
-      .cmd('node -p "require(\'fs\').renameSync(\'' + binFilename + '\', \'' + tmpBinPath + '\')"');
+      .cmd((process.platform === 'win32' ? 'move' : 'mv') + ' ' + binFilename + ' ' + tmpBinPath);
 
     builder.build(function (err) {
       if (err) {
