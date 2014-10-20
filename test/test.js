@@ -22,7 +22,7 @@ test('rebuild the pngcrush binaries', function (t) {
 		.cmd('mkdir -p ' + tmp)
 		.cmd('make && ' + move + ' ' + name + ' ' + path.join(tmp, name));
 
-	builder.build(function (err) {
+	builder.run(function (err) {
 		t.assert(!err);
 
 		fs.exists(path.join(tmp, name), function (exists) {
