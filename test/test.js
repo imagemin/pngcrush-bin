@@ -1,30 +1,28 @@
 'use strict';
 
-var binCheck = require('bin-check');
-var BinBuild = require('bin-build');
-var compareSize = require('compare-size');
 var execFile = require('child_process').execFile;
 var fs = require('fs');
 var path = require('path');
+var binCheck = require('bin-check');
+var BinBuild = require('bin-build');
+var compareSize = require('compare-size');
 var test = require('ava');
 var tmp = path.join(__dirname, 'tmp');
 
 test('rebuild the pngcrush binaries', function (t) {
 	t.plan(2);
 
-	var version = require('../').version;
-	var builder = new BinBuild()
-		.src('http://downloads.sourceforge.net/project/pmt/pngcrush/' + version + '/pngcrush-' + version + '.zip')
+	new BinBuild()
+		.src('http://downloads.sourceforge.net/project/pmt/pngcrush/1.7.85/pngcrush-1.7.85.zip')
 		.cmd('mkdir -p ' + tmp)
-		.cmd('make && mv pngcrush ' + path.join(tmp, 'pngcrush'));
+		.cmd('make && mv pngcrush ' + path.join(tmp, 'pngcrush'))
+		.run(function (err) {
+			t.assert(!err, err);
 
-	builder.run(function (err) {
-		t.assert(!err, err);
-
-		fs.exists(path.join(tmp, 'pngcrush'), function (exists) {
-			t.assert(exists);
+			fs.exists(path.join(tmp, 'pngcrush'), function (exists) {
+				t.assert(exists);
+			});
 		});
-	});
 });
 
 test('return path to binary and verify that it is working', function (t) {

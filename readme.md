@@ -5,7 +5,7 @@
 
 ## Install
 
-```sh
+```
 $ npm install --save pngcrush-bin
 ```
 
@@ -17,10 +17,6 @@ var execFile = require('child_process').execFile;
 var pngcrush = require('pngcrush-bin').path;
 
 execFile(pngcrush, ['-reduce', '-brute', 'input.png', 'output.png'], function (err) {
-	if (err) {
-		throw err;
-	}
-
 	console.log('Image minified');
 });
 ```
@@ -28,11 +24,11 @@ execFile(pngcrush, ['-reduce', '-brute', 'input.png', 'output.png'], function (e
 
 ## CLI
 
-```sh
+```
 $ npm install --global pngcrush-bin
 ```
 
-```sh
+```
 $ pngcrush --help
 ```
 
