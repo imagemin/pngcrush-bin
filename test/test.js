@@ -22,7 +22,7 @@ afterEach(function () {
 
 it('rebuild the pngcrush binaries', function (cb) {
 	new BinBuild()
-		.src('http://downloads.sourceforge.net/project/pmt/pngcrush/1.8.0/pngcrush-1.8.0.zip')
+		.src('https://downloads.sourceforge.net/project/pmt/pngcrush/1.8.10/pngcrush-1.8.10.zip')
 		.cmd('mkdir -p ' + tmp)
 		.cmd('make && mv pngcrush ' + path.join(tmp, 'pngcrush'))
 		.run(function (err) {
