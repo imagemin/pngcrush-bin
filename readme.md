@@ -1,6 +1,8 @@
 # pngcrush-bin [![Build Status](http://img.shields.io/travis/imagemin/pngcrush-bin.svg?style=flat)](https://travis-ci.org/imagemin/pngcrush-bin)
 
-> pngcrush is an optimizer which main purpose is to reduce the size of the PNG IDAT datastream by trying various compression levels an PNG filter methods
+> [pngcrush](https://pmt.sourceforge.io/pngcrush/) is an optimizer which main purpose is to reduce the size of the PNG IDAT datastream by trying various compression levels an PNG filter methods
+
+You probably want [`imagemin-pngcrush`](https://github.com/imagemin/imagemin-pngcrush) instead.
 
 
 ## Install
@@ -13,10 +15,10 @@ $ npm install --save pngcrush-bin
 ## Usage
 
 ```js
-var execFile = require('child_process').execFile;
-var pngcrush = require('pngcrush-bin');
+const {execFile} = require('child_process');
+const pngcrush = require('pngcrush-bin');
 
-execFile(pngcrush, ['-reduce', '-brute', 'input.png', 'output.png'], function (err) {
+execFile(pngcrush, ['-reduce', '-brute', 'input.png', 'output.png'], err => {
 	console.log('Image minified');
 });
 ```
@@ -35,4 +37,4 @@ $ pngcrush --help
 
 ## License
 
-MIT © [imagemin](https://github.com/imagemin)
+MIT © [Imagemin](https://github.com/imagemin)
