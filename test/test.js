@@ -13,7 +13,7 @@ test.cb('rebuild the pngcrush binaries', t => {
 	const tmp = tempy.directory();
 
 	new BinBuild()
-		.src('https://downloads.sourceforge.net/project/pmt/pngcrush/1.8.10/pngcrush-1.8.10.zip')
+		.src('https://downloads.sourceforge.net/project/pmt/pngcrush/1.8.13/pngcrush-1.8.13.zip')
 		.cmd(`mkdir -p ${tmp}`)
 		.cmd(`make && mv pngcrush ${path.join(tmp, 'pngcrush')}`)
 		.run(err => {
