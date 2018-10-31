@@ -5,22 +5,19 @@ const test = require('ava');
 const execa = require('execa');
 const tempy = require('tempy');
 const binCheck = require('bin-check');
-const BinBuild = require('bin-build');
+const binBuild = require('bin-build');
 const compareSize = require('compare-size');
 const pngcrush = require('..');
 
-test.cb('rebuild the pngcrush binaries', t => {
+test('rebuild the pngcrush binaries', async t => {
 	const tmp = tempy.directory();
 
-	new BinBuild()
-		.src('https://downloads.sourceforge.net/project/pmt/pngcrush/1.8.13/pngcrush-1.8.13.zip')
-		.cmd(`mkdir -p ${tmp}`)
-		.cmd(`make && mv pngcrush ${path.join(tmp, 'pngcrush')}`)
-		.run(err => {
-			t.ifError(err);
-			t.true(fs.existsSync(path.join(tmp, 'pngcrush')));
-			t.end();
-		});
+	await binBuild.url('https://downloads.sourceforge.net/project/pmt/pngcrush/1.8.13/pngcrush-1.8.13.zip', [
+		`mkdir -p ${tmp}`,
+		`make && mv pngcrush ${path.join(tmp, 'pngcrush')}`
+	]);
+
+	t.true(fs.existsSync(path.join(tmp, 'pngcrush')));
 });
 
 test('return path to binary and verify that it is working', async t => {
