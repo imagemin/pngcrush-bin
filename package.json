@@ -58,11 +58,11 @@
     "logalot": "^2.0.0"
   },
   "devDependencies": {
-    "ava": "*",
+    "ava": "^0.25.0",
     "bin-check": "^4.0.1",
     "compare-size": "^3.0.0",
     "execa": "^1.0.0",
     "tempy": "^0.2.1",
-    "xo": "*"
+    "xo": "^0.23.0"
   }
 }
