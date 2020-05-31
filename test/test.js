@@ -12,7 +12,7 @@ const pngcrush = require('..');
 test('rebuild the pngcrush binaries', async t => {
 	const temporary = tempy.directory();
 
-	await binBuild.url('https://downloads.sourceforge.net/project/pmt/pngcrush/1.8.13/pngcrush-1.8.13.zip', [
+	await binBuild.file(path.resolve(__dirname, '../vendor/source/pngcrush-1.8.13.tar.gz'), [
 		`mkdir -p ${temporary}`,
 		`make && mv pngcrush ${path.join(temporary, 'pngcrush')}`
 	]);
