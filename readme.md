@@ -1,4 +1,4 @@
-# pngcrush-bin [![Build Status](http://img.shields.io/travis/imagemin/pngcrush-bin.svg?style=flat)](https://travis-ci.org/imagemin/pngcrush-bin)
+# pngcrush-bin ![GitHub Actions Status](https://github.com/imagemin/pngcrush-bin/workflows/test/badge.svg?branch=master)
 
 > [pngcrush](https://pmt.sourceforge.io/pngcrush/) is an optimizer which main purpose is to reduce the size of the PNG IDAT datastream by trying various compression levels an PNG filter methods
 
