@@ -4,8 +4,9 @@
   "description": "pngcrush wrapper that makes it seamlessly available as a local dependency",
   "license": "MIT",
   "repository": "imagemin/pngcrush-bin",
+  "type": "module",
   "author": {
-    "name": "1000ch",
+    "name": "Shogo Sensui",
     "email": "shogo.sensui@gmail.com",
     "url": "github.com/1000ch"
   },
@@ -29,7 +30,7 @@
     "pngcrush": "cli.js"
   },
   "engines": {
-    "node": ">=10"
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
   },
   "scripts": {
     "postinstall": "node lib/install.js",
@@ -58,11 +59,11 @@
     "bin-wrapper": "^4.0.0"
   },
   "devDependencies": {
-    "ava": "^3.8.0",
+    "ava": "^3.15.0",
     "bin-check": "^4.0.1",
     "compare-size": "^3.0.0",
-    "execa": "^4.0.0",
-    "tempy": "^0.5.0",
-    "xo": "^0.30.0"
+    "execa": "^5.1.1",
+    "tempy": "^2.0.0",
+    "xo": "^0.45.0"
   }
 }
