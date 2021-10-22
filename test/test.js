@@ -1,20 +1,28 @@
-'use strict';
-const fs = require('fs');
-const path = require('path');
-const test = require('ava');
-const execa = require('execa');
-const tempy = require('tempy');
-const binCheck = require('bin-check');
-const binBuild = require('bin-build');
-const compareSize = require('compare-size');
-const pngcrush = require('..');
+import fs from 'node:fs';
+import path from 'node:path';
+import process from 'node:process';
+import {fileURLToPath} from 'node:url';
+import test from 'ava';
+import execa from 'execa';
+import tempy from 'tempy';
+import binCheck from 'bin-check';
+import binBuild from 'bin-build';
+import compareSize from 'compare-size';
+import pngcrush from '../index.js';
 
 test('rebuild the pngcrush binaries', async t => {
-	const temporary = tempy.directory();
+	// Skip the test on Windows
+	if (process.platform === 'win32') {
+		t.pass();
+		return;
+	}
 
-	await binBuild.file(path.resolve(__dirname, '../vendor/source/pngcrush-1.8.13.tar.gz'), [
+	const temporary = tempy.directory();
+	const source = fileURLToPath(new URL('../vendor/source/pngcrush-1.8.13.tar.gz', import.meta.url));
+
+	await binBuild.file(source, [
 		`mkdir -p ${temporary}`,
-		`make && mv pngcrush ${path.join(temporary, 'pngcrush')}`
+		`make && mv pngcrush ${path.join(temporary, 'pngcrush')}`,
 	]);
 
 	t.true(fs.existsSync(path.join(temporary, 'pngcrush')));
@@ -26,13 +34,13 @@ test('return path to binary and verify that it is working', async t => {
 
 test('minify a PNG', async t => {
 	const temporary = tempy.directory();
-	const src = path.join(__dirname, 'fixtures/test.png');
+	const src = fileURLToPath(new URL('fixtures/test.png', import.meta.url));
 	const dest = path.join(temporary, 'test.png');
 	const args = [
 		'--recompress',
 		'--shrink-extra',
 		src,
-		dest
+		dest,
 	];
 
 	await execa(pngcrush, args);
