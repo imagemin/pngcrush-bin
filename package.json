@@ -5,6 +5,7 @@
   "license": "MIT",
   "repository": "imagemin/pngcrush-bin",
   "type": "module",
+  "exports": "./index.js",
   "author": {
     "name": "Shogo Sensui",
     "email": "shogo.sensui@gmail.com",
